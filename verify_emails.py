@@ -5,6 +5,7 @@ import time
 import cloudmersive_validate_api_client
 from cloudmersive_validate_api_client.rest import ApiException
 from pprint import pprint
+import json
 
 # Configure API key authorization: Apikey
 configuration = cloudmersive_validate_api_client.Configuration()
@@ -20,6 +21,7 @@ try:
     # Fully validate an email address
     api_response = api_instance.email_full_validation(email)
     # api_response = api_instance.email_address_get_servers(email)
-    pprint(api_response)
+    jd = json.loads(api_response)  
+    pprint(jd)
 except ApiException as e:
     print("Exception when calling EmailApi->email_full_validation: %s\n" % e)
