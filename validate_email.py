@@ -24,6 +24,7 @@ import re
 import smtplib
 import logging
 import socket
+import pandas as pd
 
 try:
     raw_input
@@ -179,21 +180,52 @@ def validate_email(email, check_mx=False, verify=False, debug=False, smtp_timeou
         return None
     return True
 
-def single_validate():
-    while True:
-        email = raw_input('Enter email for validation: ')
-        logging.basicConfig()
-        result = validate_email(email, True, True, debug=False, smtp_timeout=1)
-        if result:
-            print("{0} Valid.".format(email))
-        elif result is None:
-            print("{0} Not sure.".format(email))
-        else:
-            print("{0} Invalid.".format(email))
+def single_validate(email):
+    #while True:
+        #email = raw_input('Enter email for validation: ')
+    logging.basicConfig()
+    result = validate_email(email, True, True, debug=False, smtp_timeout=1)
+    if result:
+        #print("{0} Valid.".format(email))
+        resu = 'Valid'
+    elif result is None:
+        #print("{0} Not sure.".format(email))
+        resu = 'Not sure'
+    else:
+        #print("{0} Invalid.".format(email))
+        resu = 'Invalid'
 
-        time.sleep(1)
+    return {email:resu}
+
+    '''
+    dic = {'a':1, 'b':12, 'c':11, 'd':21}
+
+	for k,v in dic.items():
+		print('key:{0}, v:{1}'.format(k,v)) 
+		'''
+
+
+    time.sleep(1)
+
+
+def r_ex(path):
+	df = pd.read_excel(path)
+	#data = df.head()
+	emails = []
+	for v in df.loc[:,'email']:
+		emails.append(v)
+	return emails
+
+def w_ex(emails):
+
+	df = pd.DataFrame({'a': [1, 2, 3, 4], 'b': [5, 6, 7, 8]})
+	df.to_excel('22.xlsx')
 
 def main():
+	path = "11.xlsx"
+	emails = r_ex(path)
+	w_ex(emails)
+
     single_validate()
 
 if __name__ == "__main__":
