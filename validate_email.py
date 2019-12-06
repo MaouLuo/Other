@@ -24,7 +24,7 @@ import re
 import smtplib
 import logging
 import socket
-import pandas as pd
+import sys
 
 try:
     raw_input
@@ -180,6 +180,24 @@ def validate_email(email, check_mx=False, verify=False, debug=False, smtp_timeou
         return None
     return True
 
+def progress(percent,width=50):
+    '''进度打印功能'''
+    if percent >= 100:
+        percent=100
+  
+    show_str=('[%%-%ds]' %width) %(int(width * percent/100)*"#") #字符串拼接的嵌套使用
+    print('\r%s %d%%' %(show_str,percent))
+
+def progress_run(MaxNum):
+    data_size = MaxNum #定义传输的数据，实际应用中这个值改一下就可以了
+    recv_size=0
+    while recv_size < data_size:
+        #time.sleep(0.1) #模拟数据的传输延迟
+        recv_size+=1 #每次收1024
+      
+        recv_per=int(100*recv_size/data_size) #接收的比例
+        progress(recv_per,width=30) #调用进度条函数，进度条的宽度默认设置为30
+
 def single_validate(email):
     #while True:
         #email = raw_input('Enter email for validation: ')
@@ -195,7 +213,7 @@ def single_validate(email):
         #print("{0} Invalid.".format(email))
         resu = 'Invalid'
 
-    return {email, resu}
+    return {email:resu}
 
     '''
     dic = {'a':1, 'b':12, 'c':11, 'd':21}
@@ -213,26 +231,46 @@ def r_ex(path):
 	emails = []
 	for v in df.loc[:,'email']:
 		emails.append(v)
-	return emails
+	return [emails
 
-def w_ex(emails):
+def w_ex(emails, valid):
+	df = pd.DataFrame({'email':emails, '验证':valid})
+	df.to_excel('validited.xlsx')
 
-	df = pd.DataFrame(emails)
-	df.to_excel('222.xlsx')
+def main(path):    
+    emails_c = {}
+    addr = []
+    val = []
+    emails_o = r_ex(path)
+    starttime = time.time()
 
-def main():
-	path = "11.xlsx"
-	emails_o = r_ex(path)
-	for e in emails:
-		email_c = single_validate(email)
-		emails_c.update(email_c)
-		time.sleep(1)
-	w_ex(emails)
+    for e in emails_o:
+        email_c = single_validate(e)
+        emails_c.update(email_c)
+        time.sleep(1)
+    
+    endtime = time.time()
+    print('校验完成，耗时：%.2s s' % (endtime-starttime))
+
+    for k,v in emails_c.items():
+        addr.append(k)
+        val.append(v)
+
+    #print('addr:{0}'.format(addr))
+    #print('val:{0}'.format(val))
+
+    w_ex(addr, val)
+
+    return
+
 
 
 if __name__ == "__main__":
     import time
-    main()
+    import pandas as pd
+
+    path = input('input your excel path:')
+    main(path)
     
 
 
