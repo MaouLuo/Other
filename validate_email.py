@@ -195,7 +195,7 @@ def single_validate(email):
         #print("{0} Invalid.".format(email))
         resu = 'Invalid'
 
-    return {email:resu}
+    return {email, resu}
 
     '''
     dic = {'a':1, 'b':12, 'c':11, 'd':21}
@@ -205,7 +205,6 @@ def single_validate(email):
 		'''
 
 
-    time.sleep(1)
 
 
 def r_ex(path):
@@ -218,15 +217,18 @@ def r_ex(path):
 
 def w_ex(emails):
 
-	df = pd.DataFrame({'a': [1, 2, 3, 4], 'b': [5, 6, 7, 8]})
-	df.to_excel('22.xlsx')
+	df = pd.DataFrame(emails)
+	df.to_excel('222.xlsx')
 
 def main():
 	path = "11.xlsx"
-	emails = r_ex(path)
+	emails_o = r_ex(path)
+	for e in emails:
+		email_c = single_validate(email)
+		emails_c.update(email_c)
+		time.sleep(1)
 	w_ex(emails)
 
-    single_validate()
 
 if __name__ == "__main__":
     import time
