@@ -231,26 +231,36 @@ def r_ex(path):
 	emails = []
 	for v in df.loc[:,'email']:
 		emails.append(v)
-	return [emails
+
+	#df.shape[0]或len(df)显示总行数，df.shape[1]显示总列数
+	return emails 
 
 def w_ex(emails, valid):
 	df = pd.DataFrame({'email':emails, '验证':valid})
 	df.to_excel('validited.xlsx')
+	return True
 
 def main(path):    
     emails_c = {}
     addr = []
     val = []
     emails_o = r_ex(path)
+    print('已读取所有邮箱')
+    
     starttime = time.time()
-
+    data_size = len(emails_o)
+    recv_size=0
     for e in emails_o:
-        email_c = single_validate(e)
-        emails_c.update(email_c)
-        time.sleep(1)
+    	email_c = single_validate(e)
+    	emails_c.update(email_c)
+    	recv_size+=1 #每次收1024
+    	recv_per=int(100*recv_size/data_size) #接收的比例
+    	progress(recv_per,width=30) #调用进度条函数，进度条的宽度默认设置为30
+    	time.sleep(1)
+
     
     endtime = time.time()
-    print('校验完成，耗时：%.2s s' % (endtime-starttime))
+    print('校验完成，耗时：%.2s s，开始生成文件' % (endtime-starttime))
 
     for k,v in emails_c.items():
         addr.append(k)
@@ -260,6 +270,7 @@ def main(path):
     #print('val:{0}'.format(val))
 
     w_ex(addr, val)
+    print('生成文件成功')
 
     return
 
