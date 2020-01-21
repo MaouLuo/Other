@@ -1,0 +1,215 @@
+点验证码
+General
+Request URL: https://tushare.pro/captcha/verify?&action=register&unique_id=5cb508a831f711eab993fdbad1ba5fbf1578474907027297&captcha=5ixn
+Request Method: GET
+Status Code: 200 OK
+Remote Address: 103.235.227.230:443
+Referrer Policy: no-referrer-when-downgrade
+
+Response Headers
+Connection: keep-alive
+Content-Length: 60
+Content-Type: text/html; charset=UTF-8
+Date: Wed, 08 Jan 2020 09:15:17 GMT
+Etag: "c5b3831c4b4929c50b06a9d7a6b517d77fca9b97"
+Server: nginx/1.16.1
+
+Request Headers
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,ru;q=0.7
+Connection: keep-alive
+Cookie: reg_from=2|1:0|10:1578474667|8:reg_from|8:MzQxMTg2|11c7065b34b45599e009828e84819ae810f5913ece4bff8ae05dc465cbf9ce88
+DNT: 1
+Host: tushare.pro
+Referer: https://tushare.pro/register?reg=341186
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+X-Requested-With: XMLHttpRequest
+
+Query String Parameters
+(empty)
+action: register
+unique_id: 5cb508a831f711eab993fdbad1ba5fbf1578474907027297
+captcha: 5ixn
+-----
+Request URL: https://tushare.pro/captcha/verify?&action=login&unique_id=5813236a31f811eab993fdbad1ba5fbf1578475328752140&captcha=wqeb
+Request Method: GET
+Status Code: 200 OK
+Remote Address: 103.235.227.230:443
+Referrer Policy: no-referrer-when-downgrade
+Connection: keep-alive
+Content-Length: 60
+Content-Type: text/html; charset=UTF-8
+Date: Wed, 08 Jan 2020 09:22:25 GMT
+Etag: "c5b3831c4b4929c50b06a9d7a6b517d77fca9b97"
+Server: nginx/1.16.1
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,ru;q=0.7
+Connection: keep-alive
+Cookie: reg_from=2|1:0|10:1578475328|8:reg_from|8:MzQxMTg2|9e85f0fa2f861dc1b1ca68fb20cb0ecb907b785233f51ed8a7e5d2b53458e2d2
+DNT: 1
+Host: tushare.pro
+Referer: https://tushare.pro/register?reg=341186
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+X-Requested-With: XMLHttpRequest
+(empty)
+action: login
+unique_id: 5813236a31f811eab993fdbad1ba5fbf1578475328752140
+captcha: wqeb
+
+
+
+点发送验证码
+Request URL: https://tushare.pro/regcode?account=espofti@mailnesia.com
+Request Method: GET
+Status Code: 200 OK
+Remote Address: 103.235.227.230:443
+Referrer Policy: no-referrer-when-downgrade
+Connection: keep-alive
+Content-Length: 72
+Content-Type: text/html; charset=UTF-8
+Date: Wed, 08 Jan 2020 09:15:25 GMT
+Etag: "f750cb5f8e49627f48fa6e6cbec4a9ac30c77982"
+Server: nginx/1.16.1
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,ru;q=0.7
+Connection: keep-alive
+Cookie: reg_from=2|1:0|10:1578474667|8:reg_from|8:MzQxMTg2|11c7065b34b45599e009828e84819ae810f5913ece4bff8ae05dc465cbf9ce88
+DNT: 1
+Host: tushare.pro
+Referer: https://tushare.pro/register?reg=341186
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+X-Requested-With: XMLHttpRequest
+account: espofti@mailnesia.com
+------
+Connection: keep-alive
+Content-Length: 72
+Content-Type: text/html; charset=UTF-8
+Date: Wed, 08 Jan 2020 09:22:29 GMT
+Etag: "f750cb5f8e49627f48fa6e6cbec4a9ac30c77982"
+Server: nginx/1.16.1
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,ru;q=0.7
+Connection: keep-alive
+Cookie: reg_from=2|1:0|10:1578475328|8:reg_from|8:MzQxMTg2|9e85f0fa2f861dc1b1ca68fb20cb0ecb907b785233f51ed8a7e5d2b53458e2d2
+DNT: 1
+Host: tushare.pro
+Referer: https://tushare.pro/register?reg=341186
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+X-Requested-With: XMLHttpRequest
+account: weccat@163.com
+
+
+点击注册
+Request URL: https://tushare.pro/register?reg=341186
+Request Method: POST
+Status Code: 200 OK
+Remote Address: 103.235.227.230:443
+Referrer Policy: no-referrer-when-downgrade
+
+Connection: keep-alive
+Content-Length: 67
+Content-Type: text/html; charset=UTF-8
+Date: Wed, 08 Jan 2020 09:23:36 GMT
+Server: nginx/1.16.1
+
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,ru;q=0.7
+Connection: keep-alive
+Content-Length: 75
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Cookie: reg_from=2|1:0|10:1578475328|8:reg_from|8:MzQxMTg2|9e85f0fa2f861dc1b1ca68fb20cb0ecb907b785233f51ed8a7e5d2b53458e2d2
+DNT: 1
+Host: tushare.pro
+Origin: https://tushare.pro
+Referer: https://tushare.pro/register?reg=341186
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+X-Requested-With: XMLHttpRequest
+
+reg: 341186
+
+account: weccat@163.com
+password: lz_910521
+captcha: wqeb
+verify_code: 601295
+
+
+
+
+Request URL: https://tushare.pro/register?reg=341186
+Referrer Policy: no-referrer-when-downgrade
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,ru;q=0.7
+Connection: keep-alive
+Content-Length: 85
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Cookie: reg_from=2|1:0|10:1578475887|8:reg_from|8:MzQxMTg2|560bda5b4a2e96b938085e1992d2a7b26a159c9ec34c9ca2f9488cca94c05afe
+DNT: 1
+Host: tushare.pro
+Origin: https://tushare.pro
+Referer: https://tushare.pro/register?reg=341186
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+X-Requested-With: XMLHttpRequest
+reg: 341186
+account: agdornipr@mailnesia.com
+password: 1234567890
+captcha: z5fg
+verify_code: 275507
+
+
+
+登录
+General
+Request URL: https://tushare.pro/login
+Request Method: POST
+Status Code: 200 OK
+Remote Address: 103.235.227.230:443
+Referrer Policy: no-referrer-when-downgrade
+
+Response Headers
+Connection: keep-alive
+Content-Length: 66
+Content-Type: text/html; charset=UTF-8
+Date: Wed, 08 Jan 2020 09:35:41 GMT
+Server: nginx/1.16.1
+Set-Cookie: uid=2|1:0|10:1578476141|3:uid|8:MzQxMTg2|7656e182e8c7d7cc9bd296de3143d244f1e79a44a95f31a2962974428eda63dd; expires=Thu, 09 Jan 2020 09:35:41 GMT; Path=/
+Set-Cookie: username=2|1:0|10:1578476141|8:username|8:56WB5rSb|69caee9cf6a27f86ae89736975eb5e16cc75fccaa17500f2dc9a92e72152f823; expires=Thu, 09 Jan 2020 09:35:41 GMT; Path=/
+
+Request Headers
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,ru;q=0.7
+Connection: keep-alive
+Content-Length: 58
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Cookie: reg_from=2|1:0|10:1578475887|8:reg_from|8:MzQxMTg2|560bda5b4a2e96b938085e1992d2a7b26a159c9ec34c9ca2f9488cca94c05afe
+DNT: 1
+Host: tushare.pro
+Origin: https://tushare.pro
+Referer: https://tushare.pro/login
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+X-Requested-With: XMLHttpRequest
+
+Form Data
+account: 285933134@qq.com
+password: lz_910521
+captcha: apxw

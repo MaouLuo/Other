@@ -26,6 +26,9 @@ import logging
 import socket
 import sys
 
+import cloudmersive_validate_api_client
+from cloudmersive_validate_api_client.rest import ApiException
+
 try:
     raw_input
 except NameError:
@@ -222,23 +225,46 @@ def single_validate(email):
 		print('key:{0}, v:{1}'.format(k,v)) 
 		'''
 
+def cloudmersive_init():
+    # Configure API key authorization: Apikey
+    configuration = cloudmersive_validate_api_client.Configuration()
+    configuration.api_key['Apikey'] = 'a7fa4e04-df08-4b69-a5f1-fcd1dbc34b88'
+    # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    # configuration.api_key_prefix['Apikey'] = 'Bearer'
 
+    # create an instance of the API class
+    api_instance = cloudmersive_validate_api_client.EmailApi(cloudmersive_validate_api_client.ApiClient(configuration))
+    #email = 'lhough@arizonatile.com' # str | Email address to validate, e.g. \"support@cloudmersive.com\".    The input is a string so be sure to enclose it in double-quotes.
+
+    return api_instance
+
+
+def cloudmersive_api(email, api_instance):
+    try:
+        # Fully validate an email address
+        api_response = api_instance.email_full_validation(email)
+        # api_response = api_instance.email_address_get_servers(email)
+        #print(api_response.valid_address)
+        return {email:api_response.valid_address}
+
+    except ApiException as e:
+        print("Exception when calling EmailApi->email_full_validation: %s\n" % e)
 
 
 def r_ex(path):
 	df = pd.read_excel(path)
-	#data = df.head()
 	emails = []
 	for v in df.loc[:,'email']:
 		emails.append(v)
-
 	#df.shape[0]或len(df)显示总行数，df.shape[1]显示总列数
 	return emails 
 
+
 def w_ex(emails, valid):
-	df = pd.DataFrame({'email':emails, '验证':valid})
+	df = pd.DataFrame({'email':emails, 'valid':valid})
 	df.to_excel('validited.xlsx')
 	return True
+
 
 def main(path):    
     emails_c = {}
@@ -246,31 +272,37 @@ def main(path):
     val = []
     emails_o = r_ex(path)
     print('已读取所有邮箱')
+    #print(sys.getsizeof(emails_o))
+    #return
     
     starttime = time.time()
     data_size = len(emails_o)
     recv_size=0
-    for e in emails_o:
-    	email_c = single_validate(e)
-    	emails_c.update(email_c)
-    	recv_size+=1 #每次收1024
-    	recv_per=int(100*recv_size/data_size) #接收的比例
-    	progress(recv_per,width=30) #调用进度条函数，进度条的宽度默认设置为30
-    	time.sleep(1)
+    api_instance = cloudmersive_init()
 
+    try:
+        for e in emails_o:
+        	#email_c = single_validate(e)        
+            email_c = cloudmersive_api(e, api_instance)
+            emails_c.update(email_c)
+            recv_size+=1 #每次收1024
+            recv_per=int(100*recv_size/data_size) #接收的比例
+            progress(recv_per,width=30) #调用进度条函数，进度条的宽度默认设置为30
+            time.sleep(10)
     
-    endtime = time.time()
-    print('校验完成，耗时：%.2s s，开始生成文件' % (endtime-starttime))
+    finally:	    
+        endtime = time.time()
+        print('校验完成，耗时：%.2s s，开始生成文件' % (endtime-starttime))
 
-    for k,v in emails_c.items():
-        addr.append(k)
-        val.append(v)
+        for k,v in emails_c.items():
+            addr.append(k)
+            val.append(v)
 
-    #print('addr:{0}'.format(addr))
-    #print('val:{0}'.format(val))
+        #print('addr:{0}'.format(addr))
+        #print('val:{0}'.format(val))
 
-    w_ex(addr, val)
-    print('生成文件成功')
+        w_ex(addr, val)
+        print('已生成文件：validited.xlsx')
 
     return
 
