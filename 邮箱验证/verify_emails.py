@@ -8,7 +8,7 @@ from pprint import pprint
 
 # Configure API key authorization: Apikey
 configuration = cloudmersive_validate_api_client.Configuration()
-configuration.api_key['Apikey'] = 'a7fa4e04-df08-4b69-a5f1-fcd1dbc34b88'
+configuration.api_key['Apikey'] = 'a7fa04-d0-49-af1-fcdbc3b88'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Apikey'] = 'Bearer'
 
