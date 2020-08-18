@@ -55,11 +55,16 @@ name_list = [
 
 
 def main():
-    #print(name_list[12])
+    ordata = pd.read_excel(path, sheet_name=0, usecols=0)
+    sales = []
+    bm_sale = []
 
-    data = pd.read_excel(path, sheet_name=0, usecols=0)
-    print(data[1])
-
+    for i in range(ordata.shape[0]): # shape获取（行x高）
+        name = ordata.loc[i,'sales_name']
+        sales.append(name)
+        #print(data)
+    bm_sale = [n for n in list(set(sales)) if n in name_list]
+    print(bm_sale)
 
 
 
