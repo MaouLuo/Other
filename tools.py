@@ -9,7 +9,7 @@ import json
 
 # 配置文件读取
 # item为所用api类型，path为配置文件所在路径, name为密钥字段
-def r_conf(item, path='./config.ini', name='token'):
+def r_conf(item, path='D:\\code\\config.ini', name='token'):
     config = configparser.ConfigParser()
     config.read(path, encoding='utf-8')
     cont = config.get(item, name)
