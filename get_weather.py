@@ -64,7 +64,7 @@ def today_wea(weaid, conf_item):
     }
     resp = requests.post(url, data=data)    
     jd = json.loads(resp.text)
-    #print(jd)
+    print(jd['result']['citynm'])
     return {'city':jd['result']['citynm'], 'date':jd['result']['days'], 'weather':jd['result']['weather'], 'htemp':jd['result']['temp_high'], 'ltemp':jd['result']['temp_low'], 'pm':jd['result']['aqi'], 'wind':jd['result']['wind'], 'winp':jd['result']['winp'], 'hhumi':jd['result']['humi_high'], 'lhumi':jd['result']['humi_low']}     
 
 # 传入省份列表，返回全部需要获取的城市数据
@@ -95,8 +95,7 @@ def run():
         for c in cities3:
             wea2.append(today_wea(c, 'nowapi3'))  
         w.insert_data('wea', pd.DataFrame(wea3))
-    except Exception as e:
-        print('err {}'.format(e))
+    
     finally:
         w.commit()
     
