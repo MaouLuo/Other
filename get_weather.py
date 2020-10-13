@@ -16,7 +16,7 @@ with open('./地级行政区.json', encoding='utf-8') as f:
 
 p1 = ['北京', '天津', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江', '上海', '江苏', '浙江', '安徽', '福建']
 p2 = ['山东', '河南', '湖北', '湖南', '广东', '广西', '海南', '重庆', '四川']
-p3 = ['云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆', '台湾', '澳门', '香港', '钓鱼岛']
+p3 = ['云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆', '台湾', '澳门', '香港']
 
 
 class wea_db():    
@@ -51,13 +51,13 @@ class wea_db():
         #print(res)
 
 # 传入城市名，返回当日天气情况列表
-def today_wea(weaid):
+def today_wea(weaid, conf_item):
     url = 'http://api.k780.com'
     data = {
         'weaid': weaid,
         'app': 'weather.today',
-        'appkey': tools.r_conf('nowapi', name='appkey'),
-        'sign': tools.r_conf('nowapi', name='sign'),
+        'appkey': tools.r_conf(item=conf_item, name='appkey'),
+        'sign': tools.r_conf(item=conf_item, name='sign'),
         #'appkey': '10003',
         #'sign': 'b59bc3ef6191eb9f747dd4e83c99f2a4',        
         'format': 'json'
@@ -75,17 +75,30 @@ def get_cities(province):
     return cities
 
 def run():
-    wea = []
-    #cities = get_cities(p1)
-    #print(cities)
-    cities = ['北京', '深圳']
-    for c in cities:
-        wea.append(today_wea(c))        
-    #print(wea)    
-    #w_date = [{'city':'', 'date':'20201014', 'weather':'', 'htemp':'', 'ltemp':'', 'pm':'', 'wind':'', 'hhumi':'', 'lhumi':''}]
+    wea1 = []
+    wea2 = []
+    wea3 = []
+    cities1 = get_cities(p1)
+    cities2 = get_cities(p2)
+    cities3 = get_cities(p3)
     w = wea_db(path)
-    w.insert_data('wea', pd.DataFrame(wea))
-    w.commit()
+
+    try:
+        for c in cities1:
+            wea1.append(today_wea(c, 'nowapi'))   
+        w.insert_data('wea', pd.DataFrame(wea1))
+        
+        for c in cities2:
+            wea2.append(today_wea(c, 'nowapi2'))  
+        w.insert_data('wea', pd.DataFrame(wea2))
+        
+        for c in cities3:
+            wea2.append(today_wea(c, 'nowapi3'))  
+        w.insert_data('wea', pd.DataFrame(wea3))
+    except Exception as e:
+        print('err {}'.format(e))
+    finally:
+        w.commit()
     
 if __name__ == "__main__":
     run()
